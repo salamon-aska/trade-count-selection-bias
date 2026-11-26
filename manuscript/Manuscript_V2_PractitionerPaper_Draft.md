@@ -1,6 +1,5 @@
 ---
 title: 'When More Trades Do Not Mean More Evidence: Selection Bias Induced by Minimum Trade Count Filters in Backtesting'
-subtitle: 'Practitioner Paper | ASMBI | V2.2 author-confirmed submission manuscript'
 author: 'MIN HAN HSIEH · Independent researcher, Taiwan'
 date: '26 November 2026'
 ---
@@ -139,7 +138,7 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 
 # Declarations
 
-**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values. The new summary is deposited at `data/recomputed/summary.csv`; the script regenerates path-level records and the figure.
+**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values. The new summary is deposited at `data/recomputed/summary.csv`. To regenerate the per-window records (`paths.csv.gz`) and rejection-rate figure (`rejection_rates.png`), install the pinned requirements and run `python experiments/replication_v2.py --out data/recomputed --n 10000 --seed 20261126` from the repository root. These outputs are reproducible on demand; the historical path-level records remain unavailable.
 
 **Funding.** This independent research received no external research funding.
 
