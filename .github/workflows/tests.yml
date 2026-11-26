@@ -20,3 +20,9 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
+      - run: python experiments/replication_v2.py --out /tmp/asmbi-recomputed --n 10000 --seed 20261126
+      - run: python tests/check_replication.py data/recomputed/summary.csv /tmp/asmbi-recomputed/summary.csv /tmp/asmbi-recomputed/paths.csv.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asmbi-recomputed
+          path: /tmp/asmbi-recomputed/
