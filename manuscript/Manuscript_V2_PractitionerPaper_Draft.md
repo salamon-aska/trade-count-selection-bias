@@ -1,6 +1,6 @@
 ---
 title: 'When More Trades Do Not Mean More Evidence: Selection Bias Induced by Minimum Trade Count Filters in Backtesting'
-subtitle: 'Practitioner Paper | ASMBI | V2.1 author-review draft'
+subtitle: 'Practitioner Paper | ASMBI | V2.2 author-confirmed submission manuscript'
 author: 'MIN HAN HSIEH · Independent researcher, Taiwan'
 date: '26 November 2026'
 ---
@@ -145,9 +145,9 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 
 **Conflicts of interest.** The author declares no known conflicts of interest. The work was conducted as independent personal research.
 
-**Author contributions.** MIN HAN HSIEH is the named human author and directed the research and manuscript preparation with substantial AI assistance as described below. The final description of human verification and approval remains subject to the author's confirmation.
+**Author contributions.** MIN HAN HSIEH directed the research, formulated the research questions and made the research decisions, with substantial AI assistance as described below. The author independently verified the mathematical derivations, source code, numerical results, references and manuscript content, and approved the manuscript for submission.
 
-**Generative AI disclosure.** OpenAI ChatGPT and Anthropic Claude provided substantial assistance with research design, literature exploration, mathematical derivations and counterexamples, code development and review, interpretation of numerical outputs, and manuscript drafting and revision. The tools also assisted with academic English editing and preparation of submission materials. The tools were used in conversational research, coding and review sessions. Exact historical model identifiers have not been fully documented. Numerical results were obtained by executing explicitly specified stochastic simulation and statistical analysis code developed with substantial generative AI assistance; numerical observations were not directly sampled from language-model responses. Neither AI system is an author. The author is responsible for the accuracy, originality and integrity of the work. Independent human verification and final manuscript approval have not yet been confirmed; AI-assisted re-execution and review are not substitutes for that verification.
+**Generative AI disclosure.** OpenAI ChatGPT and Anthropic Claude provided substantial assistance with research design, literature exploration, mathematical derivations and counterexamples, code development and review, interpretation of numerical outputs, and manuscript drafting and revision. The tools also assisted with academic English editing and preparation of submission materials. The tools were used in conversational research, coding and review sessions. Exact historical model identifiers have not been fully documented. Numerical results were obtained by executing explicitly specified stochastic simulation and statistical analysis code developed with substantial generative AI assistance; numerical observations were not directly sampled from language-model responses. Neither AI system is an author. The author is responsible for the accuracy, originality and integrity of the work. On 26 November 2026, the author confirmed completion of independent human verification of the mathematical derivations, code, numerical results, references and manuscript content, accepted full authorship responsibility, and confirmed compliance with Wiley's publication ethics and AI disclosure requirements. AI-assisted re-execution and review do not substitute for human verification.
 
 # References
 
