@@ -44,7 +44,7 @@ Table 1 summarizes the nine new contrasts. Figure 1 visualizes the conditional a
 ## 2.4 Historical aggregate outcomes
 
 
-For the first row the paired difference is 34.82 percentage points; conditional and overall frequencies have different denominators. The aggregate results also indicate that the direction is not uniform. The historical bootstrap interval is retained as reported, rather than claimed to have been recomputed from unavailable paths. Earlier exploratory results with unavailable source files, unverified tail moments, and secondary grid-search results are not used as evidence in this paper.
+Table 2 reports the historical aggregate outcomes. For the first row the paired difference is 34.82 percentage points; conditional and overall frequencies have different denominators. The aggregate results also indicate that the direction is not uniform. The historical bootstrap interval is retained as reported, rather than claimed to have been recomputed from unavailable paths. Earlier exploratory results with unavailable source files, unverified tail moments, and secondary grid-search results are not used as evidence in this paper.
 
 ## 2.5 Practical workflow
 
@@ -114,7 +114,7 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 
 # Declarations
 
-**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values. The new summary is deposited at `data/recomputed/summary.csv`. To regenerate the per-window records (`paths.csv.gz`) and rejection-rate figure (`rejection_rates.png`), install the pinned requirements and run `python experiments/replication_v2.py --out data/recomputed --n 10000 --seed 20261126` from the repository root. These outputs are reproducible on demand; the historical path-level records remain unavailable. The new per-window records and figure are also provided with the replication materials accompanying the submission. The reproducibility archive distinguishes these records from historical aggregate CSV files.
+**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values. The new summary (`summary.csv`), 30,000 per-window records (`paths.csv.gz`), and original rejection-rate figure (`rejection_rates.png`) are publicly archived in the repository under `data/recomputed/`. To regenerate them, install the pinned requirements and run `python experiments/replication_v2.py --out data/recomputed --n 10000 --seed 20261126` from the repository root. Figure 1 is generated directly from the archived summary using `figures/make_submission_figure.py`. The per-window records and figure are also included in the accompanying replication archive. The historical path-level records remain unavailable; historical aggregate CSV files are separately identified.
 
 **Funding.** This independent research received no external research funding.
 
@@ -125,6 +125,8 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 **Generative AI disclosure.** OpenAI ChatGPT and Anthropic Claude provided substantial assistance with research design, literature exploration, mathematical derivations and counterexamples, code development and review, interpretation of numerical outputs, and manuscript drafting and revision. The tools also assisted with academic English editing and preparation of submission materials. The tools were used in conversational research, coding and review sessions. Exact historical model identifiers have not been fully documented. Numerical results were obtained by executing explicitly specified stochastic simulation and statistical analysis code developed with substantial generative AI assistance; numerical observations were not directly sampled from language-model responses. Neither AI system is an author. The author is responsible for the accuracy, originality and integrity of the work. On 26 November 2026, the author confirmed completion of independent human verification of the mathematical derivations, code, numerical results, references and manuscript content, accepted full authorship responsibility, and confirmed compliance with Wiley's publication ethics and AI disclosure requirements. AI-assisted re-execution and review do not substitute for human verification.
 
 **Ethics and consent.** This study uses synthetic simulated data and does not involve human participants, animals, personal data or clinical trials; participant consent and research ethics approval are not applicable.
+
+**Supporting information.** Additional information for this article is available online: a replication archive containing the new simulation and validation code, dependency specifications, aggregate results, per-window records, figure-generation code, and separately labelled historical aggregate summaries.
 
 # References
 
@@ -154,7 +156,7 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 
 13. Khan, S., and E. Tamer. 2010. Irregular Identification, Support Conditions, and Inverse Weight Estimation. *Econometrica* 78(6): 2021–2042. https://doi.org/10.3982/ECTA7372
 
-14. Hsieh, M. H. 2026. When More Trades Do Not Mean More Evidence: Selection Bias Induced by Minimum Trade Count Filters in Backtesting. Data and code repository. GitHub. https://github.com/salamon-aska/trade-count-selection-bias/tree/b55c188de68f0ac917561d49f485320dd504bd39
+14. Hsieh, M. H. 2026. When More Trades Do Not Mean More Evidence: Selection Bias Induced by Minimum Trade Count Filters in Backtesting. Data and code repository. GitHub. https://github.com/salamon-aska/trade-count-selection-bias/tree/05d3bdd3303af493ccdb364c7cc9becd6f81f8e0
 
 # Appendix. Proofs and integrability
 
