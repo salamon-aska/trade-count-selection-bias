@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you refer to this repository, please cite it using the metadata below. The author entry is the GitHub account name pending confirmation of the formal author list."
+title: "When More Trades Do Not Mean More Evidence: Selection Bias Induced by Minimum Trade Count Filters in Backtesting"
+type: software
+authors:
+  - alias: "salamon-aska"
+repository-code: "https://github.com/salamon-aska/trade-count-selection-bias"
