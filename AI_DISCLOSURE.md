@@ -4,6 +4,6 @@ OpenAI ChatGPT and Anthropic Claude provided substantial assistance with researc
 
 The tools were used in conversational research, coding and review sessions. Exact historical model identifiers have not been fully documented. Neither AI system is an author.
 
-MIN HAN HSIEH is the named human author. The author is responsible for the accuracy, originality and integrity of the work. Independent human verification of proofs, code, numerical results, interpretations, references and final manuscript approval have not yet been confirmed. AI-assisted reviews and computational reproduction do not substitute for that verification.
+MIN HAN HSIEH is the named human author. The author is responsible for the accuracy, originality and integrity of the work. On 26 November 2026, the author confirmed independent verification of the mathematical derivations, code, numerical results, references and manuscript content, accepted full authorship responsibility, and confirmed that the final manuscript complies with Wiley's publication ethics and AI disclosure requirements. AI-assisted reviews and computational reproduction do not substitute for that verification.
 
-The author's final confirmation of contributions and verification remains outstanding.
+The author confirmed that he directed the research questions, research direction and research decisions, with assistance from ChatGPT and Claude. This record documents the author's own attestation; it is not a claim of independent third-party human audit or editorial approval.
