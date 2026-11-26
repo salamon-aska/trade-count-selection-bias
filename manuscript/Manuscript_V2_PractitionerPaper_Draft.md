@@ -9,7 +9,7 @@ date: '26 November 2026'
 
 A minimum number of completed trades is a reasonable operational eligibility rule for a backtest, but it is not a certificate of statistical reliability. When the duration and reward of trades are associated, a fixed observation window and a minimum count can select unusual outcomes. A larger count can therefore change the evidence rather than simply improve its precision.
 
-In a historical synthetic Gaussian experiment with zero expected complete-cycle reward, 850 of 10,000 windows passed a 30-trade threshold. A conventional one-sided t diagnostic rejected in 401 of these windows (47.18%), versus 105 (12.35%) when the observed count was retained but rewards were drawn independently. Across all 10,000 windows the corresponding rejection frequencies were 4.01% and 1.05%. The distinction matters: a high rejection frequency among eligible results need not imply a high rejection frequency across the full procedure. The historical aggregate file is available, but its original simulator and path-level records have not been recovered. These figures are provisional until provenance is resolved; a new independent implementation is supplied for verification.
+In a historical synthetic Gaussian experiment with zero expected complete-cycle reward, 850 of 10,000 windows passed a 30-trade threshold. A conventional one-sided t diagnostic rejected in 401 of these windows (47.18%), versus 105 (12.35%) when the observed count was retained but rewards were drawn independently. Across all 10,000 windows the corresponding rejection frequencies were 4.01% and 1.05%. The distinction matters: a high rejection frequency among eligible results need not imply a high rejection frequency across the full procedure. The historical aggregate file is available, but its original simulator and path-level records have not been recovered. These historical figures are provisional because their original provenance is incomplete. A newly implemented simulation with fresh random draws yields 465 versus 147 rejections among 935 eligible windows (49.73% versus 15.72%), with overall frequencies of 4.65% and 1.47%. The new computation is the principal reproducible numerical illustration of this version.
 
 We explain the mechanism using a marked renewal model, demonstrate why the direction of the effect need not be universal, and recommend practical reporting controls. Backtest systems should retain eligibility and validity denominators, distinguish event-time and calendar-time estimands, and calibrate the complete selection-and-testing pipeline under an explicit null. The contribution is an applied diagnostic framework, not a novel general renewal theorem or a universal correction.
 
@@ -31,11 +31,29 @@ The primary estimand is the population mean complete-event reward. The sample Sh
 
 The historical experiment used a 250-day additive zero-drift Gaussian P&L model, profit/loss thresholds in units of daily innovation standard deviation, retained overshoots, a one-day flat interval after exit, and excluded terminal incomplete trades from event-time inference. Its primary historical contrast was TP=0.5, SL=10 and m=30, with 10,000 windows and reported root seed 20261125. The matched control retains the observed completed count while independently drawing complete-cycle rewards. Its aggregate results are available, but the historical code, path-level output and pre-run hash record are missing. We therefore distinguish this historical evidence from the newly implemented experiment.
 
-The new script `experiments/replication_v2.py` uses independent standard Gaussian increments (equivalent in law to independently signed Gaussian innovations), the same additive barriers and flat interval, fresh root seed 20261126, 10,000 windows per cell by default, three cells (0.5/10, 3/3, 10/0.5), and thresholds 2, 20 and 30. It draws independent complete-cycle rewards directly, not from the historical estimated pool. It writes path-level outputs, summaries and a figure. It is a new implementation, not a recovery of the missing historical simulator. New results will only be reported after actual execution.
+The new script `experiments/replication_v2.py` uses independent standard Gaussian increments (equivalent in law to independently signed Gaussian innovations), the same additive barriers and flat interval, fresh root seed 20261126, 10,000 windows per cell by default, three cells (0.5/10, 3/3, 10/0.5), and thresholds 2, 20 and 30. It draws independent complete-cycle rewards directly, not from the historical estimated pool. It writes path-level outputs, summaries and a figure. It is a new implementation, not a recovery of the missing historical simulator. The new implementation was executed on 26 November 2026 using NumPy 2.3.5, pandas 2.2.3, SciPy 1.17.0 and Matplotlib 3.10.8. It completed 30,000 windows in total. Gaussian increments and rewards are expressed in units of the daily innovation standard deviation; the sample variance tolerance is 1e-10 in these units.
 
-## 2.3 Historical aggregate outcomes
+## 2.3 New simulation outcomes
 
-**Table 1.** Independent confirmation (10,000 windows per cell). A and E denote completed trades and count-matched independent rewards. Joint valid counts equal eligible counts in all displayed rows; denominators of individual rates are shown. Paired difference and 95% percentile bootstrap interval are in percentage points; overall rates have denominator 10,000. The first row is primary; remaining rows are descriptive. Source: `data/ENSI_confirmation_summary.csv` (historical aggregate output; path-level records not recovered).
+**Table 1.** Newly executed simulation, 10,000 windows per cell, seed 20261126. A: completed-trade diagnostic; E: independent count-matched diagnostic. Joint valid counts equal eligibility counts in these rows. Source: `data/recomputed/summary.csv`.
+
+| TP/SL | m | Eligible | A rejects | E rejects | A conditional (%) | E conditional (%) | A overall (%) | E overall (%) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+|0.5/10|2|9998|1690|1884|16.90|18.84|16.90|18.84|
+|0.5/10|20|4985|1049|609|21.04|12.22|10.49|6.09|
+|0.5/10|30|935|465|147|49.73|15.72|4.65|1.47|
+|3/3|2|10000|516|471|5.16|4.71|5.16|4.71|
+|3/3|20|2759|148|125|5.36|4.53|1.48|1.25|
+|3/3|30|1|0|0|0.00|0.00|0.00|0.00|
+|10/0.5|2|9998|43|135|0.43|1.35|0.43|1.35|
+|10/0.5|20|5009|5|88|0.10|1.76|0.05|0.88|
+|10/0.5|30|920|0|21|0.00|2.28|0.00|0.21|
+
+The primary illustrative contrast at m=30 in the 0.5/10 cell is 34.01 percentage points (paired percentile bootstrap interval 29.95–38.07; 20,000 bootstrap draws). The symmetric m=30 row has only one eligible window; its zero rejections and degenerate empirical bootstrap interval are not informative about population size. Other contrasts are descriptive; no multiplicity adjustment is claimed. The contrast was chosen based on earlier work, not preregistered. The new implementation supports the qualitative mechanism but is not an exact rerun of the historical implementation.
+
+## 2.4 Historical aggregate outcomes
+
+**Table 2.** Historical independent confirmation (10,000 windows per cell). A and E denote completed trades and count-matched independent rewards. Joint valid counts equal eligible counts in all displayed rows; denominators of individual rates are shown. Paired difference and 95% percentile bootstrap interval are in percentage points; overall rates have denominator 10,000. The first row is primary; remaining rows are descriptive. Source: `data/ENSI_confirmation_summary.csv` (historical aggregate output; path-level records not recovered).
 
 | TP/SL | m | Eligible | A rejects / valid (%) | E rejects / valid (%) | Paired difference [95% CI] | Overall A/E (%) |
 |---|---:|---:|---:|---:|---:|---:|
@@ -47,7 +65,7 @@ The new script `experiments/replication_v2.py` uses independent standard Gaussia
 
 For the first row the paired difference is 34.82 percentage points; conditional and overall frequencies have different denominators. The aggregate results also indicate that the direction is not uniform. The historical bootstrap interval is retained as reported, rather than claimed to have been recomputed from unavailable paths. Historical exploratory Tables 1 and 2, unverifiable tail moments, secondary grid-search results and figures based on missing sources are excluded from this version.
 
-## 2.4 Practical workflow
+## 2.5 Practical workflow
 
 
 
@@ -121,7 +139,7 @@ The synthetic model has no transaction costs, serial dependence, real-market val
 
 # Declarations
 
-**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values.
+**Data and code availability.** Historical aggregate results and a newly specified replication implementation are publicly available at https://github.com/salamon-aska/trade-count-selection-bias. The historical path-level data and original simulator have not been recovered; the new implementation must not be represented as reproducing the historical numerical values. The new summary is deposited at `data/recomputed/summary.csv`; the script regenerates path-level records and the figure.
 
 **Funding and conflicts of interest.** [Author to complete truthfully, including whether the research was carried out independently of the author's employer.]
 
