@@ -2,29 +2,31 @@
 
 Research repository for a Practitioner Paper intended for *Applied Stochastic Models in Business and Industry* (ASMBI).
 
-The project studies selection bias induced by requiring a minimum number of trades in a backtest.
+Author: MIN HAN HSIEH, Independent Researcher, Taiwan. No external research funding; no known conflicts of interest.
 
-## Repository structure
+## Current review version
 
-- `src/` — Reusable research code.
-- `experiments/` — Experiment configurations and runner scripts.
-- `tests/` — Software tests. The initial test checks repository layout.
-- `data/` — Data provenance and access documentation.
-- `figures/` — Figure-generation scripts and reviewed outputs.
-- `docs/` — Research methods and reproducibility documentation.
-- `manuscript/` — Manuscript materials approved for public release.
+- [Manuscript V2.1](manuscript/Manuscript_V2_PractitionerPaper_Draft.md) is the current author-review manuscript, structured according to ASMBI's four-part guidance.
+- [New simulation](experiments/replication_v2.py) is independently specified, not a recovery of the historical simulator.
+- [New summary](data/recomputed/summary.csv) contains nine contrasts from 30,000 windows. The AI-assisted second review reported reproduction to six decimal places using the pinned dependencies in a clean environment.
+- [V1](manuscript/Manuscript_V1_author_review.md), the original diagnostic scripts and historical CSVs are retained for provenance only. The original `sr_stopping_v03.py` and historical path-level files have not been recovered. Do not execute the legacy scripts as part of V2 replication.
+- Author name, research independence, funding and conflict declarations have been confirmed by the author. Human verification and final approval have not yet been confirmed.
 
-## Run the tests
+## Reproduce
 
-Use Python 3.12 and run `python -m unittest discover -s tests -v` from the repository root. The initial test checks the repository layout. The author-review manuscript and partial research artifacts are now publicly available. The initial layout test is not evidence of scientific reproducibility.
+Use Python 3.12.
 
+```bash
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python experiments/replication_v2.py --out /tmp/asmbi-recomputed --n 10000 --seed 20261126
+python tests/check_replication.py data/recomputed/summary.csv /tmp/asmbi-recomputed/summary.csv /tmp/asmbi-recomputed/paths.csv.gz
+```
 
-## Pre-submission review (2026-11-26)
+The run writes the full per-window summary records, aggregate CSV and a rejection-rate figure. The records contain counts, validity/rejection indicators and the mean of the completed-event rewards; they do not contain all individual Gaussian increments or trade rewards.
 
-- [Manuscript V1](manuscript/Manuscript_V1_author_review.md): full draft for review, not accepted or submission-certified.
-- [Independent confirmation summary](data/ENSI_confirmation_summary.csv) and [corrected round-four summary](data/ENSI_round4_corrected_summary.csv): recovered historical synthetic simulation summaries, not newly generated results.
-- [Math check](experiments/ensi_math_check.py) and [round-four diagnostic](experiments/ensi_round4.py): recovered scripts; both depend on the missing original `sr_stopping_v03.py` module. The original path-level Parquet input is also outstanding. Do not claim end-to-end replication yet.
-- Figures referenced in the manuscript and the four-part restructuring remain outstanding in this repository.
-- Formal author identity, funding/conflict statements, literature verification, independent human checks and final submission approval remain outstanding.
+## Review status
 
-Review priority: check mathematical assumptions and proofs; compare conditional versus overall rejection denominators; recover original code and outputs; review the four-part Practitioner Paper structure; verify references and AI disclosure. Report findings with exact file/section references, distinguish critical issues from suggestions, and do not fabricate results.
+The historical results cannot be exactly rerun with the available historical files. The new experiment is the primary computational illustration. AI-assisted reviews do not constitute independent human author verification. No journal acceptance or editorial approval is implied.
+
+See [AI disclosure](AI_DISCLOSURE.md) and [citation metadata](CITATION.cff).
